@@ -7,6 +7,7 @@ import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js";
 import clienteRoutes from "../src/clientes/cliente.routes.js";
+import publicacionesRoutes from "../src/publicaciones/publicaciones.routes.js";
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 
 
@@ -32,6 +33,7 @@ const conectarDB = async () =>{
 const routes = (app) => {
     app.use("/uniNet/v1/auth", authRoutes);
     app.use("/uniNet/v1/cliente", clienteRoutes);
+    app.use("/uniNet/v1/publicaciones", publicacionesRoutes);
 }
 
 export const initServer = () => {
