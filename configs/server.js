@@ -8,6 +8,7 @@ import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js";
 import clienteRoutes from "../src/clientes/cliente.routes.js";
 import publicacionesRoutes from "../src/publicaciones/publicaciones.routes.js";
+import comentariosRoutes from "../src/comentarios/comentarios.routes.js";
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 
 
@@ -34,6 +35,7 @@ const routes = (app) => {
     app.use("/uniNet/v1/auth", authRoutes);
     app.use("/uniNet/v1/cliente", clienteRoutes);
     app.use("/uniNet/v1/publicaciones", publicacionesRoutes);
+    app.use("/uniNet/v1/comentarios", comentariosRoutes);
 }
 
 export const initServer = () => {
