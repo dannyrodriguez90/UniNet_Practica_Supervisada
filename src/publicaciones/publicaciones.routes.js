@@ -6,8 +6,8 @@ import { crearPublicacionValidator, editarPublicacionValidator, eliminarPublicac
 const router = Router();
 
 router.post("/crearPublicacion/", [validarJWT, crearPublicacionValidator], crearPublicacion);
-router.put("editarPulicacion/:id", [validarJWT, editarPublicacionValidator], editarPublicacion);
-router.delete("eliminarPublicaion/:id", [validarJWT, eliminarPublicacionValidator], eliminarPublicacion);
+router.put("/editarPulicacion/:id", [validarJWT, editarPublicacionValidator], editarPublicacion);
+router.delete("/eliminarPublicaion/:id", [validarJWT, eliminarPublicacionValidator], eliminarPublicacion);
 router.get("/", obtenerPublicaciones);
 
 export default router;

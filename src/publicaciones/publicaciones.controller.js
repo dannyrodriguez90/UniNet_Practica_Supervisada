@@ -75,7 +75,7 @@ export const eliminarPublicacion = async (req, res) => {
             });
         }
 
-        await publicacion.eliminar(req.usuario._id);
+        await Publicacion.findByIdAndDelete(id);
 
         res.status(200).json({
             success: true,
