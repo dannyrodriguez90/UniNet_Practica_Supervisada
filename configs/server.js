@@ -10,7 +10,7 @@ import clienteRoutes from "../src/clientes/cliente.routes.js";
 import publicacionesRoutes from "../src/publicaciones/publicaciones.routes.js";
 import comentariosRoutes from "../src/comentarios/comentarios.routes.js";
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
-
+import createDefaultAdmin from "./default.js";
 
 
 const middlewares = (app) => {
@@ -25,6 +25,7 @@ const middlewares = (app) => {
 const conectarDB = async () =>{
     try{
         await dbConnection()
+        await createDefaultAdmin();
     }catch(err){
         console.log(`Database connection failed: ${err}`)
         process.exit(1)
