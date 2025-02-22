@@ -3,7 +3,6 @@ import { validarCampos } from "./validate-campos.js";
 
 export const crearPublicacionValidator = [
     body("titulo").notEmpty().withMessage("El título es requerido"),
-    body("categoria").notEmpty().withMessage("La categoría es requerida"),
     body("texto").notEmpty().withMessage("El texto es requerido"),
     validarCampos
 ];

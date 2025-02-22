@@ -1,11 +1,32 @@
 import Publicacion from "./publicaciones.model.js";
+import { Categoria } from "../categoria/categoria.model.js";
 
 export const crearPublicacion = async (req, res) => {
     try {
         const { titulo, categoria, texto } = req.body;
         const autor = req.usuario._id;
 
-        const nuevaPublicacion = new Publicacion({ titulo, categoria, texto, autor });
+        let categoriaSeleccionada;
+        if (categoria) {
+            categoriaSeleccionada = await Categoria.findById(categoria);
+            if (!categoriaSeleccionada) {
+                return res.status(404).json({
+                    success: false,
+                    message: "Categoría no encontrada"
+                });
+            }
+        } else {
+            // Usa la categoría predeterminada si no se especifica una categoría
+            categoriaSeleccionada = await Categoria.findOne({ nombre: "General" });
+            if (!categoriaSeleccionada) {
+                return res.status(500).json({
+                    success: false,
+                    message: "Categoría predeterminada no encontrada"
+                });
+            }
+        }
+
+        const nuevaPublicacion = new Publicacion({ titulo, categoria: categoriaSeleccionada._id, texto, autor });
         await nuevaPublicacion.save();
 
         res.status(201).json({
@@ -41,7 +62,23 @@ export const editarPublicacion = async (req, res) => {
             });
         }
 
-        await publicacion.editar(titulo, categoria, texto);
+        let categoriaSeleccionada;
+        if (categoria) {
+            categoriaSeleccionada = await Categoria.findById(categoria);
+            if (!categoriaSeleccionada) {
+                return res.status(404).json({
+                    success: false,
+                    message: "Categoría no encontrada"
+                });
+            }
+        } else {
+            categoriaSeleccionada = publicacion.categoria;
+        }
+
+        publicacion.titulo = titulo;
+        publicacion.categoria = categoriaSeleccionada._id;
+        publicacion.texto = texto;
+        await publicacion.save();
 
         res.status(200).json({
             success: true,
@@ -92,7 +129,7 @@ export const eliminarPublicacion = async (req, res) => {
 
 export const obtenerPublicaciones = async (_req, res) => {
     try {
-        const publicaciones = await Publicacion.find().populate("autor", "name username");
+        const publicaciones = await Publicacion.find().populate("autor", "nombre email");
 
         res.status(200).json({
             success: true,

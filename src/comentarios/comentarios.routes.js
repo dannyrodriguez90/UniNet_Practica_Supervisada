@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { agregarComentario, editarComentario, eliminarComentario } from "./comentarios.controller.js";
-import { validarJWT } from "../herlpers/validar-jwt.js";
+import { validarJWT } from "../middlewares/validar-jwt.js";
 import { comentarioValidator } from "../middlewares/comentario-validator.js";
 
 const router = Router();
