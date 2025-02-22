@@ -19,32 +19,16 @@ const publicacionSchema = new Schema({
         ref: "Cliente",
         required: true
     },
-    fechaCreacion: {
-        type: Date,
-        default: Date.now
-    },
-    fechaActualizacion: {
-        type: Date
-    }
 }, {
     versionKey: false,
     timestamps: true
 });
 
-publicacionSchema.methods.editar = function (nuevoTitulo, nuevaCategoria, nuevoTexto) {
-    if (nuevoTitulo) this.titulo = nuevoTitulo;
-    if (nuevaCategoria) this.categoria = nuevaCategoria;
-    if (nuevoTexto) this.texto = nuevoTexto;
-    this.fechaActualizacion = Date.now();
-    return this.save();
+publicacionSchema.methods.toJSON = function () {
+    const { _id, ...publicacion } = this.toObject();
+    publicacion.uid = _id;
+    return publicacion;
 };
 
-publicacionSchema.methods.eliminar = function (usuarioId) {
-    if (this.autor.toString() === usuarioId.toString()) {
-        return this.remove();
-    } else {
-        throw new Error("No tienes permiso para eliminar esta publicación");
-    }
-};
 
 export default model("Publicacion", publicacionSchema);

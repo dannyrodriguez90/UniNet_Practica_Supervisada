@@ -14,13 +14,6 @@ const comentarioSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Publicacion",
         required: true
-    },
-    fechaCreacion: {
-        type: Date,
-        default: Date.now
-    },
-    fechaActualizacion: {
-        type: Date
     }
 }, {
     versionKey: false,
