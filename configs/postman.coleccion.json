@@ -1,0 +1,256 @@
+{
+  "info": {
+    "name": "UniNet Practica Supervisada",
+    "_postman_id": "12345678-1234-1234-1234-123456789012",
+    "description": "Colección de Postman para las rutas de UniNet Practica Supervisada",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Publicaciones",
+      "item": [
+        {
+          "name": "Crear Publicación",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"titulo\": \"\",\n\t\"contenido\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/publicaciones/crearPublicacion/",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "publicaciones", "crearPublicacion"]
+            }
+          }
+        },
+        {
+          "name": "Editar Publicación",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"titulo\": \"\",\n\t\"contenido\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/publicaciones/editarPulicacion/:id",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "publicaciones", "editarPulicacion", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Publicación",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/publicaciones/eliminarPublicacion/:id",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "publicaciones", "eliminarPublicacion", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Publicaciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/publicaciones/",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "publicaciones"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comentarios",
+      "item": [
+        {
+          "name": "Agregar Comentario",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"comentario\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/comentarios/agregarComentario/:id",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "comentarios", "agregarComentario", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Editar Comentario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"comentario\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/comentarios/editarComentario/:comentarioId/:id",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "comentarios", "editarComentario", ":comentarioId", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Comentario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/comentarios/eliminarComentario/:comentarioId/:id",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "comentarios", "eliminarComentario", ":comentarioId", ":id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Registrar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "profilePicture",
+                  "type": "file",
+                  "src": ""
+                },
+                {
+                  "key": "email",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "key": "password",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"email\": \"\",\n\t\"password\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Obtener Usuario por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/cliente/findUser/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "cliente", "findUser", ":uid"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/cliente/",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "cliente"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Contraseña",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"password\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/cliente/updatePassword/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "cliente", "updatePassword", ":uid"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Usuario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"nombre\": \"\",\n\t\"email\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/cliente/updateUser/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "cliente", "updateUser", ":uid"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Foto de Perfil",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "profilePicture",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/uniNet/v1/cliente/updateProfilePicture/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["uniNet", "v1", "cliente", "updateProfilePicture", ":uid"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
